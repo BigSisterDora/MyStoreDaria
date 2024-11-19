@@ -15,11 +15,20 @@ public class Customer implements Serializable {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name; // Позволяет изменить имя клиента
+    }
+
     public double getBalance() {
         return balance;
     }
 
     public void setBalance(double balance) {
-        this.balance = balance;
+        this.balance = balance; // Позволяет изменить баланс клиента
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{name='" + name + "', balance=" + balance + "}";
     }
 }

@@ -95,4 +95,51 @@ public class StoreManager {
             System.out.println("Not enough product quantity or customer balance.");
         }
     }
+
+    public void editProduct(String productName, String newName, double newPrice, int newQuantity) {
+        Product product = findProductByName(productName);
+        if (product != null) {
+            product.setName(newName);
+            product.setPrice(newPrice);
+            product.setQuantity(newQuantity);
+            saveData();
+            System.out.println("Product updated: " + product);
+        } else {
+            System.out.println("Product not found.");
+        }
+    }
+
+    public void removeProduct(String productName) {
+        Product product = findProductByName(productName);
+        if (product != null) {
+            products.remove(product);
+            saveData();
+            System.out.println("Product removed: " + productName);
+        } else {
+            System.out.println("Product not found.");
+        }
+    }
+
+    public void editCustomer(String customerName, String newName, double newBalance) {
+        Customer customer = findCustomerByName(customerName);
+        if (customer != null) {
+            customer.setName(newName);
+            customer.setBalance(newBalance);
+            saveData();
+            System.out.println("Customer updated: " + customer);
+        } else {
+            System.out.println("Customer not found.");
+        }
+    }
+
+    public void removeCustomer(String customerName) {
+        Customer customer = findCustomerByName(customerName);
+        if (customer != null) {
+            customers.remove(customer);
+            saveData();
+            System.out.println("Customer removed: " + customerName);
+        } else {
+            System.out.println("Customer not found.");
+        }
+    }
 }

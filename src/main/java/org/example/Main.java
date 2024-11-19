@@ -23,6 +23,10 @@ public class Main {
             System.out.println("3 - Add Customer");
             System.out.println("4 - List Customers");
             System.out.println("5 - Buy Product");
+            System.out.println("6 - Edit Product");
+            System.out.println("7 - Remove Product");
+            System.out.println("8 - Edit Customer");
+            System.out.println("9 - Remove Customer");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -76,6 +80,39 @@ public class Main {
                     } else {
                         System.out.println("Invalid customer or product.");
                     }
+                    break;
+                case 6:
+                    System.out.print("Enter product name to edit: ");
+                    String productNameToEdit = scanner.nextLine();
+                    System.out.print("Enter new name: ");
+                    String newProductName = scanner.nextLine();
+                    System.out.print("Enter new price: ");
+                    double newPrice = scanner.nextDouble();
+                    System.out.print("Enter new quantity: ");
+                    int newQuantity = scanner.nextInt();
+                    storeManager.editProduct(productNameToEdit, newProductName, newPrice, newQuantity);
+                    break;
+
+                case 7:
+                    System.out.print("Enter product name to remove: ");
+                    String productNameToRemove = scanner.nextLine();
+                    storeManager.removeProduct(productNameToRemove);
+                    break;
+
+                case 8:
+                    System.out.print("Enter customer name to edit: ");
+                    String customerNameToEdit = scanner.nextLine();
+                    System.out.print("Enter new name: ");
+                    String newCustomerName = scanner.nextLine();
+                    System.out.print("Enter new balance: ");
+                    double newBalance = scanner.nextDouble();
+                    storeManager.editCustomer(customerNameToEdit, newCustomerName, newBalance);
+                    break;
+
+                case 9:
+                    System.out.print("Enter customer name to remove: ");
+                    String customerNameToRemove = scanner.nextLine();
+                    storeManager.removeCustomer(customerNameToRemove);
                     break;
                 default:
                     System.out.println("Invalid choice.");
