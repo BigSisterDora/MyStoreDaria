@@ -4,9 +4,16 @@ import org.example.models.User;
 import org.example.tools.Input;
 
 public class AppHelperUserDataInput {
-    public User createUser(Input input) {
-        int id = input.readInt("Enter user ID: ");
-        String name = input.readString("Enter user name: ");
-        return new User(id, name);
+    private final Input input;
+
+    public AppHelperUserDataInput(Input input) {
+        this.input = input;
+    }
+
+    public User createUser() {
+        System.out.println("Добавление нового пользователя:");
+        String name = input.readString("Введите имя пользователя: ");
+        double balance = input.readDouble("Введите начальный баланс пользователя: ");
+        return new User(name, balance); // ID создается автоматически
     }
 }

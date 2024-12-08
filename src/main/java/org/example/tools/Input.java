@@ -1,7 +1,7 @@
 package org.example.tools;
 
 public interface Input {
-    String readString(String prompt);
-    int readInt(String prompt);
-    double readDouble(String prompt);
+    int readInt(String prompt);      // Чтение целого числа
+    String readString(String prompt); // Чтение строки
+    double readDouble(String prompt); // Чтение числа с плавающей точкой
 }

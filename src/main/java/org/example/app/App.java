@@ -8,14 +8,10 @@ import org.example.services.ProductService;
 import org.example.services.UserService;
 import org.example.tools.Input;
 
-
-import java.util.Scanner;
-
 public class App {
     private final Input input;
     private final ProductService productService;
     private final UserService userService;
-    private Scanner scanner = new Scanner(System.in);
 
     public App(Input input, ProductService productService, UserService userService) {
         this.input = input;
@@ -39,35 +35,53 @@ public class App {
             System.out.println("8. Редактировать пользователя");
             System.out.println("9. Удалить пользователя");
 
-            int task = Integer.parseInt(input.nextLine());
+            System.out.print("Выберите номер задачи: ");
+            int task = input.readInt("");
+
             switch (task) {
                 case 0:
                     repeat = false;
                     break;
+
                 case 1:
-                    AppHelperProductDataInput appHelperProductDataInput = new AppHelperProductDataInput();
-                    productService.addProduct(appHelperProductDataInput);
+                    Product newProduct = productService.createProduct(input);
+                    productService.addProduct(newProduct);
                     break;
+
                 case 2:
                     productService.listProducts();
                     break;
+
                 case 3:
-                    AppHelperUserDataInput appHelperUserDataInput = new AppHelperUserDataInput();
-                    userService.addUser(appHelperUserDataInput);
+                    AppHelperUserDataInput appHelperUserDataInput = new AppHelperUserDataInput(input);
+                    User newUser = appHelperUserDataInput.createUser();
+                    userService.addUser(newUser);
                     break;
+
                 case 4:
                     userService.listUsers();
                     break;
+
                 case 5:
+                    productService.buyProduct(input, userService);
                     break;
+
                 case 6:
+                    productService.editProduct(input);
                     break;
+
                 case 7:
+                    productService.deleteProduct(input);
                     break;
+
                 case 8:
+                    userService.editUser(input);
                     break;
+
                 case 9:
+                    userService.deleteUser(input);
                     break;
+
                 default:
                     System.out.println("Выберите номер задачи из списка!");
             }

@@ -5,10 +5,10 @@ import org.example.tools.Input;
 
 public class AppHelperProductDataInput {
     public Product createProduct(Input input) {
-        int id = input.readInt("Enter product ID: ");
-        String name = input.readString("Enter product name: ");
-        double price = input.readDouble("Enter product price: ");
-        int quantity = input.readInt("Enter product quantity: ");
-        return new Product(id, name, price, quantity);
+        System.out.println("Добавление нового продукта:");
+        String name = input.readString("Введите название продукта: ");
+        double price = input.readDouble("Введите цену продукта: ");
+        int quantity = input.readInt("Введите количество продукта: ");
+        return new Product(name, price, quantity); // ID создается автоматически
     }
 }
