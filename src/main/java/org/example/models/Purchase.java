@@ -11,5 +11,4 @@ public class Purchase {
         this.quantity = quantity;
     }
 
-    // Getters and Setters
 }
